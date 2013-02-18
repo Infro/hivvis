@@ -1,0 +1,26 @@
+﻿eGqueryRequest result
+  structure: 2776
+  taxonomy: 5
+  snp: 4
+  dbvar: 805
+  epigenomics: 0
+  gene: 4266
+  sra: 1086
+  biosystems: 1162
+  unigene: 205
+  cdd: 79
+  clone: 0
+  unists: 48
+  popset: 4438
+  geoprofiles: 452353
+  gds: 3622
+  homologene: 28
+  pccompound: 221
+  pcsubstance: 188266
+  pcassay: 24220
+  nlmcatalog: 12084
+  probe: 1391
+  gap: 310
+  proteinclusters: 10
+  bioproject: 229
+  biosample: 5286

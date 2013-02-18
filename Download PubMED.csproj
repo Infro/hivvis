@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{59994FB6-5C8C-4F8A-B756-DF0F0F1544BC}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Download_PubMED</RootNamespace>
+    <AssemblyName>Download PubMED</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\eUtils\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="PUBMED_eUtilsSoap\efetch_db_gene.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_journals.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_nlmc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_omim.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_pmc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_pubmed.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_seq.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_snp.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_db_taxon.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_gene.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_gene.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_journals.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_journals.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_nlmc.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_nlmc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_omim.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_omim.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_pmc.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_pmc.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_pubmed.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_pubmed.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_seq.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_seq.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_snp.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_snp.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\efetch_taxon.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\efetch_taxon.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\egquery.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\einfo.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\elink.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\epost.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\esearch.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\espell.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\esummary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\eutils.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\eUtils_DOC.tar.gz" />
+    <None Include="PUBMED_eUtilsSoap\eutils_imp.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\eutils_MS.wsdl" />
+    <None Include="PUBMED_eUtilsSoap\eUtils_WSDL.tar.gz" />
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\common\common-attribs.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\common\math.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\common\xlink-href.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\arith.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\calculus.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\common-attrib.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\constants.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\constructs.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\elementary-functions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\functions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\linear-algebra.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\logic.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\relations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\semantics.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\sets.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\statistics.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\tokens.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\content\vector-calculus.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\mathml2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\action.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\characters.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\common-attribs.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\common-types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\error.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\layout.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\scripts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\space.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\style.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\table.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\ncbi-mathml2\presentation\tokens.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\xlink.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PUBMED_eUtilsSoap\xml.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.eInfoResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.eLinkResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.ePostResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.eSearchResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.eSpellResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.eSummaryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eUtils\Download_PubMED.eUtils.Result.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\eUtils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eUtils\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eUtils\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eUtils\eUtils1.wsdl" />
+    <None Include="Service References\eUtils\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PUBMED_eUtilsSoap\esoap_help.html" />
+    <Content Include="PUBMED_eUtilsSoap\esoap_java_help.html" />
+    <Content Include="PUBMED_eUtilsSoap\esoap_ms_help.html" />
+    <Content Include="PUBMED_eUtilsSoap\esoap_ms_vb_help.html" />
+    <Content Include="PUBMED_eUtilsSoap\esoap_toolkit.html" />
+    <Content Include="PUBMED_eUtilsSoap\esoap_whatsnew.html" />
+    <Content Include="PUBMED_eUtilsSoap\ncbi-mathml2\readme.txt" />
+    <Content Include="Stuff.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>svcutil.exe</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

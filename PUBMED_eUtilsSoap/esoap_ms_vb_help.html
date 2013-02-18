@@ -1,0 +1,2969 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="esoap_ms_vb_help_files/filelist.xml">
+<link rel=Edit-Time-Data href="esoap_ms_vb_help_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Using Entrez Utilities Web Service with Visual Basic and MS Visual
+Studio 2005</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>miller</o:Author>
+  <o:LastAuthor>miller</o:LastAuthor>
+  <o:Revision>14</o:Revision>
+  <o:TotalTime>81</o:TotalTime>
+  <o:Created>2010-11-04T16:07:00Z</o:Created>
+  <o:LastSaved>2010-11-04T17:36:00Z</o:LastSaved>
+  <o:Pages>7</o:Pages>
+  <o:Words>4107</o:Words>
+  <o:Characters>23413</o:Characters>
+  <o:Company>NCBI</o:Company>
+  <o:Lines>195</o:Lines>
+  <o:Paragraphs>54</o:Paragraphs>
+  <o:CharactersWithSpaces>27466</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=themeData href="esoap_ms_vb_help_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="esoap_ms_vb_help_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073741899 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073750139 0 0 159 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1627400839 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-1610611985 1073750091 0 0 159 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:1.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+h2
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#4F81BD;
+	font-weight:bold;}
+h3
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#4F81BD;
+	font-weight:bold;}
+h4
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+h5
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
+	margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	color:#243F60;
+	font-weight:normal;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+pre
+	{mso-style-priority:99;
+	mso-style-link:"HTML Preformatted Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-hansi-font-family:Cambria;
+	color:#4F81BD;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-hansi-font-family:Cambria;
+	color:#4F81BD;
+	font-weight:bold;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 4";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-hansi-font-family:Cambria;
+	color:#4F81BD;
+	font-weight:bold;
+	font-style:italic;}
+span.Heading5Char
+	{mso-style-name:"Heading 5 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 5";
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-hansi-font-family:Cambria;
+	color:#243F60;}
+span.SubtitleChar
+	{mso-style-name:"Subtitle Char";
+	mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Subtitle;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-hansi-font-family:Cambria;
+	color:#4F81BD;
+	letter-spacing:.75pt;
+	font-style:italic;}
+p.msochpdefault, li.msochpdefault, div.msochpdefault
+	{mso-style-name:msochpdefault;
+	mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.subtitlechar0
+	{mso-style-name:subtitlechar;
+	mso-style-unhide:no;}
+span.HTMLPreformattedChar
+	{mso-style-name:"HTML Preformatted Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"HTML Preformatted";
+	font-family:Consolas;
+	mso-ascii-font-family:Consolas;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Consolas;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:45447563;
+	mso-list-template-ids:1144010074;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1
+	{mso-list-id:277221201;
+	mso-list-template-ids:-1255496326;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:472135793;
+	mso-list-template-ids:492234506;}
+@list l2:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1239245184;
+	mso-list-template-ids:1928470628;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l3:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:1880821233;
+	mso-list-template-ids:-188591402;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l4:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:1970353806;
+	mso-list-template-ids:1795960596;}
+@list l5:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=600 style='width:6.25in;
+ mso-cellspacing:1.5pt;mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td width=140 style='width:105.0pt;padding:0in 0in 0in 0in'>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt'><a
+  href="http://www.ncbi.nlm.nih.gov/"><span style='font-family:"Times New Roman","serif";
+  mso-no-proof:yes;text-decoration:none;text-underline:none'><img border=0
+  width=130 height=45 id="_x0000_i1025" src="../../../../corehtml/left.GIF"></span></a></p>
+  </td>
+  <td width=360 valign=bottom style='width:3.75in;padding:0in 0in 0in 0in'></td>
+  <td width=100 valign=bottom style='width:75.0pt;padding:0in 0in 0in 0in'></td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman";display:none;mso-hide:all'><o:p>&nbsp;</o:p></span></p>
+
+<!--  the quicklinks bar   -->
+
+<table class=MsoNormalTable border=0 cellpadding=0 width="100%"
+ style='width:100.0%;mso-cellspacing:1.5pt;background:black;mso-yfti-tbllook:
+ 1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=PubMed"><span
+  style='color:white'>PubMed</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=Nucleotide"><span
+  style='color:white'>Nucleotide</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=Protein"><span
+  style='color:white'>Protein</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=Genome"><span
+  style='color:white'>Genome</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=nlmcatalog"><span
+  style='color:white'>NLM Catalog</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=omim"><span
+  style='color:white'>OMIM</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=PMC"><span
+  style='color:white'>PMC</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=taxonomy"><span
+  style='color:white'>Taxonomy</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=snp"><span
+  style='color:white'>SNP</span> </a></span></p>
+  </td>
+  <td style='padding:1.5pt 1.5pt 1.5pt 1.5pt'>
+  <p class=MsoNormal align=center style='margin-bottom:0in;margin-bottom:.0001pt;
+  text-align:center'><span style='font-family:"Times New Roman","serif"'><a
+  href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=gene"><span
+  style='color:white'>Gene</span> </a></span></p>
+  </td>
+<!--
+					<td style="padding:1.5pt 1.5pt 1.5pt 1.5pt">
+						<p class="MsoNormal" align="center" style="margin-bottom:0in;margin-bottom:.0001pt;  text-align:center">
+							<span style='font-family:"Times New Roman","serif"'>
+								<a href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=Journals">
+									<span style="color:white">Journals</span>
+								</a>
+							</span>
+						</p>
+					</td>
+					<td style="padding:1.5pt 1.5pt 1.5pt 1.5pt">
+						<p class="MsoNormal" align="center" style="margin-bottom:0in;margin-bottom:.0001pt;  text-align:center">
+							<span style='font-family:"Times New Roman","serif"'>
+								<a href="http://www.ncbi.nlm.nih.gov/sites/entrez?db=Books">
+									<span style="color:white">Books</span>
+								</a>
+							</span>
+						</p>
+					</td>
+-->
+ </tr>
+</table>
+
+<h1><span style='font-size:18.0pt;mso-fareast-font-family:"Times New Roman"'>Using
+Entrez Utilities Web Service with Visual Basic and MS Visual Studio 2005 </span><span
+style='mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h1>
+
+<p class=MsoSubtitle>Updated: December 14, 2010 </p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'><a href="#simple_project">Creating a Web Service Client
+     Project</a><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'><a href="#api">NCBI Entrez Utilities Web Service API</a><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l0 level1 lfo1;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'><a href="#examples">Examples</a><o:p></o:p></span></li>
+ <ul type=circle>
+  <li class=MsoNormal style='color:blue;mso-margin-top-alt:auto;mso-margin-bottom-alt:
+      auto;line-height:normal;mso-list:l0 level2 lfo1;tab-stops:list 1.0in'><span
+      style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+      "Times New Roman";color:windowtext'><a href="#complex">Search, Link &amp;
+      Fetch example</complex><span style='font-size:11.0pt;font-family:"Calibri","sans-serif";
+      mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:minor-fareast'><o:p></o:p></span></a></span></li>
+  <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+      auto;line-height:normal;mso-list:l0 level2 lfo1;tab-stops:list 1.0in'><span
+      style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+      "Times New Roman"'><a href="#webenv">Using <span class=SpellE>WebEnv</span>
+      &amp; QueryKey example</a></span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Times New Roman","serif"'>Entrez Utilities Web Service has been tested with:</span></p>
+
+<ul type=disc>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l4 level1 lfo4;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Microsoft .NET Framework Version 3.5 SP1<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l4 level1 lfo4;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Microsoft Visual Studio 2008 Version 9.0.30729.1 SP<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<h2><a name="simple_project"></a><span style='mso-fareast-font-family:"Times New Roman"'>Creating
+a Web Service Client Project<o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:normal'><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif"'>The following walkthrough describes how
+to create a Visual Basic project to access the <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/eutils_help.html">NCBI
+Entrez Utilities Web Service</a> using MS Visual Studio 2005. </span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Times New Roman","serif"'>To create Windows application: </span><o:p></o:p></p>
+
+<ol start=1 type=1 ">
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Press <span class=SpellE>Ctrl+Shift+N</span> or Select <b>File</b>
+     menu, then <b>New</b>, and then click <b>Project</b> to open the New
+     Project dialog. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Select <b>Visual C# </b>in <b>Project types</b> list. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Select <b>Windows Forms Application</b> in <b>Templates</b>
+     list. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Click <b>OK</b> to create a new project.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Select <b>View</b> menu and then <b>Toolbox</b> to open
+     a Toolbox window.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>From the Toolbox, drag a Textbox and a Button to the
+     design surface of Form1. Set Textbox’ Multiline property to true.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>On the <b>Project</b> menu, click <b>Add Service
+     Reference</b>.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>In the <b>Address</b> field of the Add Service
+     Reference dialog, type the URL <b>http://eutils.ncbi.nlm.nih.gov/soap/v2.0/eutils.wsdl</b>
+     or path to local file (for example, <b>C:\SOAP\eUtils\v2.0\eutils.wsdl</b>)
+     if you downloaded <span class=SpellE>eUtils</span> WSDL/XSD files from <a
+     href="ftp://ftp.ncbi.nlm.nih.gov/pub/eutils/soap/v2.0/" target="_blank">our
+     FTP site</a> <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Click the <b>Go</b> button to retrieve information
+     about the XML Web service.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>In the <b>Namespace</b> field type <span class=SpellE><b>eUtils</b></span>.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Click <b>OK</b>. The new <span class=SpellE><b
+     style='mso-bidi-font-weight:normal'>eUtils</b></span> item will appear in <b
+     style='mso-bidi-font-weight:normal'>Service References</b> list in the <b
+     style='mso-bidi-font-weight:normal'>Solution Explorer</b> view. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Double-click the button on Form1 to create an
+     event-handling method for this button. <o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>In the Button1_Click method enter the following code: <o:p></o:p></span></li>
+</ol>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ margin-left:1.0in;mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' <span class=SpellE>eInfo</span>
+  utility returns a list of available databases</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.<span
+  style='mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'>eUtilsServiceSoapClient</span></span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eInfoRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eUtils.eInfoResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI <span class=SpellE>EInfo</span> utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eInfo</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>i</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>For</span>
+  <span class=SpellE>i</span> = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.DbList.Items.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span class=SpellE>res.DbList.Items</span>(<span class=SpellE>i</span>) + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Next</span>
+  <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <pre><span style='color:blue'>End</span> <span style='color:blue'>Try</span></pre></blockquote>
+  </td>
+ </tr>
+</table>
+
+<ol start=14 type=1>
+ <li class=MsoNormal style='mso-margin-top-alt:auto;mso-margin-bottom-alt:auto;
+     line-height:normal;mso-list:l2 level1 lfo6;tab-stops:list .5in'><span
+     style='font-size:12.0pt;font-family:"Times New Roman","serif";mso-fareast-font-family:
+     "Times New Roman"'>Build and run application.<o:p></o:p></span></li>
+</ol>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman";color:red'>Important: Currently, the
+default maximum length of the SOAP message is only 64Kb. C# application fails
+when Web Service response size exceeds this value. To increase the limit open <span
+class=SpellE>app.config</span> file located in the application’s root directory
+and change all <span class=SpellE><b style='mso-bidi-font-weight:normal'>maxReceivedMessageSize</b></span>
+and <span class=SpellE><b style='mso-bidi-font-weight:normal'>maxBufferSize</b></span></span><span
+style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:"Times New Roman";
+color:red;mso-no-proof:yes'> </span><span style='font-size:12.0pt;font-family:
+"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";color:red'>parameters
+to the same larger value, for example, </span><span style='font-size:12.0pt;
+font-family:"Courier New";color:red'>2000000</span><span style='font-size:12.0pt;
+font-family:"Times New Roman","serif";mso-fareast-font-family:"Times New Roman";
+color:red'>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<h2><a name=api></a><span style='mso-fareast-font-family:"Times New Roman"'>NCBI
+Entrez Utilities Web Service API<o:p></o:p></span></h2>
+
+<p>Below is a list of available methods. </p>
+
+<p>Click on parameter to get its description.<br>
+Click on method name to see the example of use.</p>
+
+<pre><span style='color:blue'>Public Function</span> <a href="#ex_run_eGquery"><span
+class=SpellE>run_<span class=GramE>eGquery</span></span></a>( <span
+class=SpellE><span style='color:blue'>ByVal</span></span> <span class=SpellE>eGqueryRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eGQueryRequest</span>) <span
+style='color:blue'>As</span> Result</pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>eGqueryRequest</span></span> class properties:</pre><pre>&nbsp;&nbsp;&nbsp; - String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/egquery_help.html#Searchterms">term</a></pre><pre>&nbsp;&nbsp;&nbsp; - String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/egquery_help.html#Tool">tool</a></pre><pre>&nbsp;&nbsp;&nbsp; - String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/egquery_help.html#E-mailAddress">email</a></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+style='color:blue'>Public Function</span> <a href="#ex_run_eInfo"><span
+class=SpellE>run_<span class=GramE>eInfo</span></span></a>(<span class=SpellE><span
+style='color:blue'>ByVal</span></span> <span class=SpellE>eInfoRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eInfoRequest</span>) <span
+style='color:blue'>As</span> <span class=SpellE>eInfoResult</span></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>eInfoRequest</span></span> class properties:</pre><pre>&nbsp;&nbsp;&nbsp; - String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/einfo_help.html#database">db</a></pre><pre>&nbsp;&nbsp;&nbsp; - String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/einfo_help.html#URLparameters">tool</a></pre><pre>&nbsp;&nbsp;&nbsp; - String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/einfo_help.html#URLparameters">email</a></pre><pre><o:p>&nbsp;</o:p></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+style='color:blue'>Public Function</span> <a href="#ex_run_eLink"><span
+class=SpellE>run_<span class=GramE>eLink</span></span></a>(<span class=SpellE><span
+style='color:blue'>ByVal</span></span> <span class=SpellE>eLinkRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eLinkRequest</span>) <span
+style='color:blue'>As</span> eLinkResult</pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>eLinkRequest</span></span> class properties:</pre><pre>&nbsp;&nbsp;<span style='mso-spacerun:yes'>  </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#ToDatabase">db</a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- <span
+class=GramE>String[</span>] <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#RecordIdentifier">id</a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#RelativeDates"><span
+class=SpellE>reldate</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#DateRanges"><span
+class=SpellE>mindate</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#DateRanges"><span
+class=SpellE>maxdate</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#DateType"><span
+class=SpellE>datetype</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#SearchLimits:">term</a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#FromDatabase"><span
+class=SpellE>dbfrom</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#WebEnvironment"><span
+class=SpellE>WebEnv</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#Query_key"><span
+class=SpellE>query_key</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#LinkCommandValues"><span
+class=SpellE>cmd</span></a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#Tool">tool</a></pre><pre>&nbsp;&nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/elink_help.html#E-mailAddress">email</a></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+style='color:blue'>Public Function</span> <a href="#ex_run_ePost"><span
+class=SpellE>run_<span class=GramE>ePost</span></span></a>(<span class=SpellE><span
+style='color:blue'>ByVal</span></span> <span class=SpellE>ePostRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>ePostRequest</span>) <span
+style='color:blue'>As</span> <span class=SpellE>ePostResult</span></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>ePostRequest</span></span> class properties:</pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/epost_help.html#Database">db</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/epost_help.html#RecordIdentifier">id</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/epost_help.html#Tool">tool</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/epost_help.html#E-mailAddress">email</a></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+style='color:blue'>Public Function</span> <a href="#ex_run_eSearch"><span
+class=SpellE>run_<span class=GramE>eSearch</span></span></a>(<span
+class=SpellE><span style='color:blue'>ByVal</span></span> <span class=SpellE>eSearchRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eSearchRequest</span>) <span
+style='color:blue'>As</span> <span class=SpellE>SearchResult</span></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>eSearchRequest</span></span> class properties:</pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#Database">db</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#Searchterms">term</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#WebEnvironment"><span
+class=SpellE>WebEnv</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#Query_key"><span
+class=SpellE>query_key</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#History"><span
+class=SpellE>usehistory</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#Tool">tool</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#E-mailAddress">email</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#SearchField">field</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#RelativeDates"><span
+class=SpellE>reldate</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#DateRanges"><span
+class=SpellE>mindate</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#DateRanges"><span
+class=SpellE>maxdate</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#DateType"><span
+class=SpellE>datetype</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#DisplayNumbers"><span
+class=SpellE>retstart</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#DisplayNumbers"><span
+class=SpellE>retmax</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#RetrievalType"><span
+class=SpellE>rettype</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esearch_help.html#Sort">sort</a></pre><pre> </pre><pre><span style='mso-spacerun:yes'> </span><span
+style='color:blue'>Public Function</span> <a href="#ex_run_eSpell"><span
+class=SpellE>run_<span class=GramE>eSpell</span></span></a>(<span class=SpellE><span
+style='color:blue'>ByVal</span></span> <span class=SpellE>eSpellRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eSpellRequest</span>)&nbsp; <span
+style='color:blue'>As</span> <span class=SpellE>eSpellResult</span></pre><pre><o:p>&nbsp;</o:p></pre><pre> <span
+class=SpellE><span class=GramE>eSpellRequest</span></span> class properties:</pre><pre><span style='mso-spacerun:yes'>  </span>&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/espell_help.html#LiteratureDatabases">db</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/espell_help.html#SearchTerms">term</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/espell_help.html#Tool">tool</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/espell_help.html#E-mailAddress">email</a></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+style='color:blue'>Public Function</span> <a href="#ex_run_eSummary"><span
+class=SpellE>run_<span class=GramE>eSummary</span></span></a>(<span
+class=SpellE><span style='color:blue'>ByVal</span></span> <span class=SpellE>eSummaryRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eSummaryRequest</span>) <span
+style='color:blue'>As</span> <span class=SpellE>SummaryResult</span></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>eSummaryRequest</span></span> class properties:</pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#Database">db</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#RecordIdentifier">id</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#WebEnvironment"><span
+class=SpellE>WebEnv</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#Query_key"><span
+class=SpellE>query_key</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#DisplayNumbers"><span
+class=SpellE>retstart</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#DisplayNumbers"><span
+class=SpellE>retmax</span></a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#Tool">tool</a></pre><pre> &nbsp;&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/esummary_help.html#E-mailAddress">email</a></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+style='color:blue'>Public Function</span> <a href="#ex_run_eFetch"><span
+class=SpellE>run_<span class=GramE>eFetch</span></span></a>(<span class=SpellE><span
+style='color:blue'>ByVal</span></span> <span class=SpellE>eFetchRequest</span> <span
+style='color:blue'>As</span> <span class=SpellE>eFetchRequest</span>) <span
+style='color:blue'>As</span> <span class=SpellE>eFetchResult</span></pre><pre><o:p>&nbsp;</o:p></pre><pre><span
+class=SpellE><span class=GramE>eFetchRequest</span></span> class properties:</pre><pre><span style='mso-spacerun:yes'>  </span>&nbsp;&nbsp;- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetch_help.html#Database">db</a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchlit_help.html#RecordIdentifier">id</a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetch_help.html#WebEnvironment"><span
+class=SpellE>WebEnv</span></a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetch_help.html#Query_key"><span
+class=SpellE>query_key</span></a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetch_help.html#Tool">tool</a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetch_help.html#E-mailAddress">email</a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchlit_help.html#DisplayNumbers"><span
+class=SpellE>retstart</span></a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchlit_help.html#DisplayNumbers"><span
+class=SpellE>retmax</span></a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchlit_help.html#RetrievalType"><span
+class=SpellE>rettype</span></a></pre><pre><o:p>&nbsp;</o:p></pre><pre><i>&nbsp;Properties available for Sequence databases: </i></pre><pre><o:p>&nbsp;</o:p></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchseq_help.html#rettypeparam"><span
+class=SpellE>rettype</span></a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchseq_help.html#seqparam">strand</a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchseq_help.html#seqparam"><span
+class=SpellE>seq_start</span></a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchseq_help.html#seqparam"><span
+class=SpellE>seq_stop</span></a></pre><pre><span style='mso-spacerun:yes'>  </span><span style='mso-spacerun:yes'>  </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchseq_help.html#seqparam">complexity</a></pre><pre><span style='mso-spacerun:yes'>    </span>- String <a
+href="http://www.ncbi.nlm.nih.gov/entrez/query/static/efetchseq_help.html#seqparam">report</a></pre>
+
+<p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+normal'><span style='font-size:12.0pt;font-family:"Times New Roman","serif";
+mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+
+<h2><a name=examples></a><span style='mso-fareast-font-family:"Times New Roman"'>Examples<o:p></o:p></span></h2>
+
+<h3><a name="ex_run_eGquery"></a><span style='mso-fareast-font-family:"Times New Roman"'>Call
+<a href="../../../../../entrez/query/static/egquery_help.html"><span
+class=SpellE>EGQuery</span></a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' search in multiple
+  Entrez databases</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eUtilsService<span
+  style='mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'>SoapClient</span></span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eGqueryRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eUtils.Result</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI <span class=SpellE>EGQuery</span> utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.term</span>
+  = <span style='color:maroon'>&quot;mouse&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eGquery</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;Search term: &quot;</span> + <span class=SpellE>res.Term</span>
+  + <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;Results: &quot;</span> + <span class=SpellE>Chr</span>(13)
+  + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>i</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>For</span>
+  <span class=SpellE>i</span> = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.eGQueryResult.ResultItem.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span style='color:maroon'>&quot;&nbsp; &quot;</span> + <span
+  class=SpellE>res.eGQueryResult.ResultItem</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>DbName</span> + _</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:maroon'>&quot;: &quot;</span> + <span class=SpellE>res.eGQueryResult.ResultItem</span>(<span
+  class=SpellE>i</span>).Count + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Next</span>
+  <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>End</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  style='color:blue'>Try</span></span></p>
+  </blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_eInfo"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/einfo_help.html"><span class=SpellE>EInfo</span></a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' <span class=SpellE>eInfo</span>
+  utility returns an PMC db info</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.<span
+  style='mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'>eUtilsServiceSoapClient</span></span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eInfoRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eUtils.eInfoResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI <span class=SpellE>EInfo</span> utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.db</span>
+  = <span style='color:maroon'>&quot;<span class=SpellE>pmc</span>&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eInfo</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;<span class=SpellE>DbName</span>: &quot;</span> + <span
+  class=SpellE>res.DbInfo.DbName</span> + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;Description: &quot;</span> + <span class=SpellE>res.DbInfo.Description</span>
+  + <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;<span class=SpellE>MenuName</span>: &quot;</span>
+  + <span class=SpellE>res.DbInfo.MenuName</span> + <span class=SpellE>Chr</span>(13)
+  + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <pre><span style='color:blue'>End</span> <span style='color:blue'>Try</span></pre></blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_eLink"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/elink_help.html">ELink</a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' example retrieves
+  links from Nucleotide to Protein for GI 48819,7140345 </span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eLinkRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eUtils.eLinkResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  id(1) <span style='color:blue'>As</span> <span style='color:blue'>String</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; id(0) = <span
+  style='color:maroon'>&quot;48819,7140345&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI ELink utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.db</span>
+  = <span style='color:maroon'>&quot;protein&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.dbfrom</span>
+  = <span style='color:maroon'>&quot;nuccore&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; req.id = id</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eLink</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>i</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>For</span>
+  <span class=SpellE>i</span> = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.LinkSet.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span style='color:maroon'>&quot;Links from &quot;</span> + <span
+  class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>DbFrom</span> + <span style='color:maroon'>&quot; to &quot;</span>
+  + <span class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>LinkSetDb</span>(0).<span class=SpellE>DbTo</span> + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span style='color:maroon'>&quot;&nbsp; &quot;</span> + <span
+  class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>DbFrom</span> + <span style='color:maroon'>&quot; id(s): &quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>Dim</span> k <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>For</span> k = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>IdList.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).IdList(k).Value
+  + <span style='color:maroon'>&quot; &quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>Next</span> k</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span style='color:maroon'>&quot;&nbsp; &quot;</span> + <span
+  class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>LinkSetDb</span>(0).<span class=SpellE>DbTo</span> + <span
+  style='color:maroon'>&quot; id(s): &quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>For</span> k = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>LinkSetDb</span>(0).<span class=SpellE>Link.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span class=SpellE>res.LinkSet</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>LinkSetDb</span>(0).Link(k).<span class=SpellE>Id.Value</span> +
+  <span style='color:maroon'>&quot; &quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>Next</span> k</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10) + <span
+  style='color:maroon'>&quot;----------------------&quot;</span> + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Next</span>
+  <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>End</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  style='color:blue'>Try</span></span></p>
+  </blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_ePost"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/epost_help.html"><span class=SpellE>EPost</span></a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' put Id list to
+  history for later use</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.ePostRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.ePostResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI <span class=SpellE>EPost</span> utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.db</span>
+  = <span style='color:maroon'>&quot;pubmed&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; req.id = <span
+  style='color:maroon'>&quot;123,456,37281,983621&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_ePost</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;<span class=SpellE>WebEnv</span>: &quot;</span> + <span
+  class=SpellE>res.WebEnv</span> + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10) + <span style='color:maroon'>&quot;QueryKey:
+  &quot;</span> + <span class=SpellE>res.QueryKey</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <pre><span style='color:blue'>End</span> <span style='color:blue'>Try</span></pre></blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_eSearch"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/esearch_help.html">ESearch</a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' search in PubMed
+  Central for stem cells in free <span class=SpellE>fulltext</span> articles</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp; Dim</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eUtilsService<span
+  style='mso-fareast-font-family:"Times New Roman";mso-no-proof:yes'>SoapClient</span></span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eSearchRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eUtils.eSearchResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI ESearch utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  NOTE: search term should be URL encoded </span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.db</span>
+  = <span style='color:maroon'>&quot;<span class=SpellE>pmc</span>&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.term</span>
+  = <span style='color:maroon'>&quot;<span class=SpellE>stem+cells+AND+free+fulltext</span>[filter]&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.RetStart</span>
+  = 0</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.RetMax</span>
+  = 15</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eSearch</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;Original query: stem cells AND free <span
+  class=SpellE>fulltext</span>[filter]&quot;</span> + <span class=SpellE>Chr</span>(13)
+  + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;Found ids: &quot;</span> + <span class=SpellE>res.Count</span>
+  + <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;First &quot;</span> + <span class=SpellE>res.RetMax</span>
+  + <span style='color:maroon'>&quot; ids: &quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>i</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>For</span>
+  <span class=SpellE>i</span> = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.IdList.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text +=
+  <span class=SpellE>res.IdList</span>(<span class=SpellE>i</span>) + <span
+  style='color:maroon'>&quot; &quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Next</span>
+  <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <pre><span style='color:blue'>End</span> <span style='color:blue'>Try</span></pre></blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_eSpell"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/espell_help.html"><span class=SpellE>ESpell</span></a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' retrieves spelling
+  suggestions</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;<span style='color:blue'>Try</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; <span
+  style='color:blue'>Dim</span> <span class=SpellE>serv</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.eUtilsService<span style='mso-fareast-font-family:"Times New Roman";
+  mso-no-proof:yes'>SoapClient</span></span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; <span
+  style='color:blue'>Dim</span> <span class=SpellE>req</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.eSpellRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; <span
+  style='color:blue'>Dim</span> res <span style='color:blue'>As</span> <span
+  class=SpellE>eUtils.eSpellResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; <span
+  style='color:green'>' call NCBI <span class=SpellE>ESpell</span> utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; <span class=SpellE>req.db</span>
+  = <span style='color:maroon'>&quot;pubmed&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; <span class=SpellE>req.term</span>
+  = <span style='color:maroon'>&quot;<span class=SpellE>mouss</span>&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; res = <span
+  class=SpellE>serv.run_eSpell</span>(<span class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; &nbsp;<span
+  style='color:green'>' results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;Misspelled word: &quot;</span> + <span
+  class=SpellE>res.Query</span> + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; TextBox1.Text += <span
+  style='color:maroon'>&quot;Corrected word: &quot;</span> + <span
+  class=SpellE>res.CorrectedQuery</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;<span style='color:blue'>Catch</span>
+  <span class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <pre>&nbsp;<span style='color:blue'>End</span> <span style='color:blue'>Try</span></pre></blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_eSummary"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/esummary_help.html">ESummary</a><o:p></o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' retrieves document
+  Summaries for ID list</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp; Dim</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eUtils.eSummaryRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eUtils.eSummaryResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI ESummary utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span class=SpellE>req.db</span>
+  = <span style='color:maroon'>&quot;nuccore&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; req.id = <span
+  style='color:maroon'>&quot;28864546,28800981&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eSummary</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  style='color:maroon'>&quot;&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>i</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>For</span>
+  <span class=SpellE>i</span> = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.DocSum.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span style='color:maroon'>&quot;ID: &quot;</span> + <span class=SpellE>res.DocSum</span>(<span
+  class=SpellE>i</span>).Id + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>Dim</span> k <span style='color:blue'>As</span> <span
+  style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>For</span> k = 0 <span style='color:blue'>To</span> <span
+  class=SpellE>res.DocSum</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>Item.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>If</span> <span style='color:blue'>Not</span> <span
+  class=SpellE>res.DocSum</span>(<span class=SpellE>i</span>).Item(k).<span
+  class=SpellE>ItemContent</span> <span style='color:blue'>Is</span> <span
+  style='color:blue'>Nothing</span> <span style='color:blue'>Then</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;&nbsp; &quot;</span> + <span
+  class=SpellE>res.DocSum</span>(<span class=SpellE>i</span>).Item(k).Name + _</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:maroon'>&quot;: &quot;</span> + <span class=SpellE>res.DocSum</span>(<span
+  class=SpellE>i</span>).Item(k).<span class=SpellE>ItemContent</span> + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  End</span><span style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'>
+  <span style='color:blue'>If</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; <span
+  style='color:blue'>Next</span> k</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp; TextBox1.Text
+  += <span style='color:maroon'>&quot;-----------------------&quot;</span> + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10) + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Next</span>
+  <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <pre><span style='color:blue'>End</span> <span style='color:blue'>Try</span></pre></blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="ex_run_eFetch"></a>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'>Call <a
+href="../../../../../entrez/query/static/efetch_help.html"><span class=SpellE>EFetch</span></a><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'>To
+fetch data from one of the supported databases add the corresponding Web
+Reference to project. For example, for taxonomy database in Add Service
+Reference dialog type <b>http://eutils.ncbi.nlm.nih.gov/soap/v2.0/efetch_taxon.wsdl</b>
+in <i>Address </i>field and <span class=SpellE><b>eFetchTaxon</b></span> in <i>Namespace</i>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'>Taxonomy
+database example: </span></p>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:green'>' fetch a record from
+  Taxonomy database</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Try</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp; Dim</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>serv</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eFetchTaxon.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  <span class=SpellE>req</span> <span style='color:blue'>As</span> <span
+  style='color:blue'>New</span> <span class=SpellE>eFetchTaxon.eFetchRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> <span class=SpellE>eFetchTaxon.eFetchResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  call NCBI <span class=SpellE>EFetch</span> utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; req.id = <span
+  style='color:maroon'>&quot;9685&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; res = <span class=SpellE>serv.run_eFetch</span>(<span
+  class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; <span style='color:green'>'
+  results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>res.TaxaSet</span>(0).<span class=SpellE>ScientificName</span> +
+  <span style='color:maroon'>&quot;: &quot;</span> + _</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>res.TaxaSet</span>(0).Division + <span style='color:maroon'>&quot;
+  (&quot;</span> + _</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>res.TaxaSet</span>(0).Rank + <span style='color:maroon'>&quot;)&quot;</span>
+  + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>Catch</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  class=SpellE>eee</span> <span style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp; TextBox1.Text = <span
+  class=SpellE>eee.ToString</span>()</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>End</span><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Courier New"'> <span
+  style='color:blue'>Try</span></span></p>
+  </blockquote>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'><a
+href="file:///\\entrez\query\static\efetch_help.html"><span style='color:black;
+text-decoration:none;text-underline:none'>Search, Link &amp; Fetch example</span></a><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'>Add
+two Service References to the project: <b><a
+href="http://eutils.ncbi.nlm.nih.gov/soap/v2.0/eutils.wsdl">http://eutils.ncbi.nlm.nih.gov/soap/v2.0/eutils.wsdl</a>
+</b>and<b> <a href="http://eutils.ncbi.nlm.nih.gov/soap/v2.0/efetch_seq.wsdl">http://eutils.ncbi.nlm.nih.gov/soap/v2.0/efetch_seq.wsdl</a></b>
+files. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'>Name
+them <span class=SpellE><b>eUtils</b></span> and <span class=SpellE><b>eFetchSeq</b></span>
+correspondingly. <o:p></o:p></span></p>
+
+<h3><span style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
+color:red'>Important: Increase all </span><span class=SpellE><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
+color:red;font-weight:normal;mso-bidi-font-weight:bold'>maxReceivedMessageSize</span></span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
+color:red'> and </span><span class=SpellE><span style='font-size:12.0pt;
+line-height:115%;font-family:"Times New Roman","serif";color:red;font-weight:
+normal;mso-bidi-font-weight:bold'>maxBufferSize</span></span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
+color:red'> parameters in <span class=SpellE>app.config</span> file to </span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Courier New";color:red'>2000000
+</span><span style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
+color:red'>before running the application.</span><span style='mso-fareast-font-family:
+"Times New Roman"'><o:p></o:p></span></h3>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></h3>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> ids(1) <span style='color:blue'>As</span>
+  <span style='color:blue'>String</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>fetchIds</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>String</span> </span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ids(0) = <span style='color:maroon'>&quot;&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>fetchIds</span> = <span style='color:maroon'>&quot;&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:maroon'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' STEP #1: search in PubMed for &quot;cat&quot; </span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>'</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Try</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>serv</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>req</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.eSearchRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> res <span style='color:blue'>As</span> <span
+  class=SpellE>eUtils.eSearchResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' call NCBI ESearch utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' NOTE: search term should be URL encoded </span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.db</span> = <span style='color:maroon'>&quot;pubmed&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.sort</span> = <span style='color:maroon'>&quot;<span
+  class=SpellE>PublicationDate</span>&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.term</span> = <span style='color:maroon'>&quot;<span
+  class=SpellE>cat+AND+pubmed_nuccore</span>[<span class=SpellE>sb</span>]&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.RetMax</span> = <span style='color:maroon'>&quot;5&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  res = <span class=SpellE>serv.run_eSearch</span>(<span class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' store UIDs for use in ELink</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>i</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>For</span> <span class=SpellE>i</span> = 0 <span
+  style='color:blue'>To</span> <span class=SpellE>res.IdList.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>If</span> <span class=SpellE>i</span> &gt; 0 <span
+  style='color:blue'>Then</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ids(0) += <span
+  style='color:maroon'>&quot;,&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>End</span> <span style='color:blue'>If</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ids(0) += <span class=SpellE>res.IdList</span>(<span class=SpellE>i</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Next</span> <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text = <span style='color:maroon'>&quot;Search in PubMed for cat
+  returned &quot;</span> + <span class=SpellE>res.Count</span> + <span
+  style='color:maroon'>&quot; hits&quot;</span> + <span class=SpellE>Chr</span>(13)
+  + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;Search links in nuccore for
+  the first 5 UIDs: &quot;</span> + ids(0) + <span class=SpellE>Chr</span>(13)
+  + <span class=SpellE>Chr</span>(10) + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Catch</span> <span class=SpellE>eee</span> <span
+  style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span class=SpellE>eee.ToString</span>()</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>End</span> <span style='color:blue'>Try</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' STEP #2: get links in nucleotide database
+  (nuccore)</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>'</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;<span style='color:blue'>Try</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>serv</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>req</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eUtils.eLinkRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> res <span style='color:blue'>As</span> <span
+  class=SpellE>eUtils.eLinkResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' call NCBI ELink utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.dbfrom</span> = <span style='color:maroon'>&quot;pubmed&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.db</span> = <span style='color:maroon'>&quot;nuccore&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;req.id = ids</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  res = <span class=SpellE>serv.run_eLink</span>(<span class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' read result and create a list of UIDs to fetch</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>i</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>For</span> <span class=SpellE>i</span> = 0 <span
+  style='color:blue'>To</span> <span class=SpellE>res.LinkSet</span>(0).<span
+  class=SpellE>LinkSetDb</span>(0).<span class=SpellE>Link.Length</span> - 1</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>If</span> <span class=SpellE>i</span> &gt; 0 <span
+  style='color:blue'>Then</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=SpellE>fetchIds</span> += <span
+  style='color:maroon'>&quot;,&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>End</span> <span style='color:blue'>If</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>fetchIds</span> += <span class=SpellE>res.LinkSet</span>(0).<span
+  class=SpellE>LinkSetDb</span>(0).Link(<span class=SpellE>i</span>).<span
+  class=SpellE>Id.Value</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Next</span> <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;ELink returned the
+  following UIDs from nuccore: &quot;</span> + <span class=SpellE>fetchIds</span>
+  + <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10) + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Catch</span> <span class=SpellE>eee</span> <span
+  style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span class=SpellE>eee.ToString</span>()</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>End</span> <span style='color:blue'>Try</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";color:blue'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' STEP #3: fetch records from nuccore</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>'</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Try</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>serv</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eFetchSeq.eUtilsServiceSoapClient</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>req</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>New</span> <span
+  class=SpellE>eFetchSeq.eFetchRequest</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> res <span style='color:blue'>As</span> <span
+  class=SpellE>eFetchSeq.eFetchResult</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' call NCBI <span class=SpellE>EFetch</span>
+  utility</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class=SpellE>req.db</span> = <span style='color:maroon'>&quot;nuccore&quot;</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  req.id = <span class=SpellE>fetchIds</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  res = <span class=SpellE>serv.run_eFetch</span>(<span class=SpellE>req</span>)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:green'>' results output</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Dim</span> <span class=SpellE>i</span> <span
+  style='color:blue'>As</span> <span style='color:blue'>Integer</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>For</span> <span class=SpellE>i</span> = 0 <span
+  style='color:blue'>To</span> <span class=SpellE>Math.Min</span>(4, <span
+  class=SpellE>res.GBSet.GBSeq.Length</span> - 1)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;Organism: &quot;</span> + <span
+  class=SpellE>res.GBSet.GBSeq</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>GBSeq_organism</span> + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;Locus: &quot;</span> + <span
+  class=SpellE>res.GBSet.GBSeq</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>GBSeq_locus</span> + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;Definition: &quot;</span> +
+  <span class=SpellE>res.GBSet.GBSeq</span>(<span class=SpellE>i</span>).<span
+  class=SpellE>GBSeq_definition</span> + <span class=SpellE>Chr</span>(13) + <span
+  class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span style='color:maroon'>&quot;----------------------&quot;</span>
+  + <span class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10) + <span
+  class=SpellE>Chr</span>(13) + <span class=SpellE>Chr</span>(10)</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Next</span> <span class=SpellE>i</span></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>Catch</span> <span class=SpellE>eee</span> <span
+  style='color:blue'>As</span> Exception</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  TextBox1.Text += <span class=SpellE>eee.ToString</span>()</span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span style='color:blue'>End</span> <span style='color:blue'>Try</span></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<h3><span style='mso-fareast-font-family:"Times New Roman"'><a
+href="file:///\\entrez\query\static\efetch_help.html"><span style='color:black;
+text-decoration:none;text-underline:none'>Using <span class=SpellE>WebEnv</span>
+&amp; QueryKey example</span></a><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'>Add
+two Service References to the project: <b><a
+href="http://eutils.ncbi.nlm.nih.gov/soap/v2.0/eutils.wsdl">http://eutils.ncbi.nlm.nih.gov/soap/v2.0/eutils.wsdl</a>
+</b>and<b> <a href="http://eutils.ncbi.nlm.nih.gov/soap/v2.0/efetch_pubmed.wsdl">http://eutils.ncbi.nlm.nih.gov/soap/v2.0/efetch_pubmed.wsdl</a></b>
+files. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='tab-stops:45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif"'>Name
+them <span class=SpellE><b>eUtils</b></span> and <span class=SpellE><b>eFetchPubmed</b></span>
+correspondingly. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Times New Roman","serif";color:red'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;font-family:
+"Times New Roman","serif";color:red'>Important: Increase all <span
+class=SpellE><b style='mso-bidi-font-weight:normal'>maxReceivedMessageSize</b></span>
+and <span class=SpellE><b style='mso-bidi-font-weight:normal'>maxBufferSize</b></span>
+parameters in <span class=SpellE>app.config</span> file to </span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Courier New";color:red'>2000000
+</span><span style='font-size:12.0pt;line-height:115%;font-family:"Times New Roman","serif";
+color:red'>before running the application.<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<table class=MsoNormalTable border=1 cellpadding=0 style='mso-cellspacing:1.5pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0in 0in 0in 0in'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='background:#F8F8F8;padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New"'>&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;</span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>Dim</span> WebEnv <span style='color:blue'>As</span>
+  <span style='color:blue'>String<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>Dim</span> query_key <span style='color:blue'>As</span>
+  <span style='color:blue'>String<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span>WebEnv = <span style='color:#A31515'>&quot;&quot;<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span>query_key = <span style='color:#A31515'>&quot;&quot;<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";color:#A31515;mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:green'>' STEP #1: search in PubMed for
+  &quot;cat&quot; <o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:green'>'<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>Try<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  serv <span style='color:blue'>As</span> <span style='color:blue'>New</span>
+  eUtils.eUtilsServiceSoapClient<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  req <span style='color:blue'>As</span> <span style='color:blue'>New</span>
+  eUtils.eSearchRequest<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> eUtils.eSearchResult<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>' call
+  NCBI ESearch utility<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>' NOTE:
+  search term should be URL encoded <o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>        
+  </span><span style='mso-spacerun:yes'>   </span>req.db = <span
+  style='color:#A31515'>&quot;pubmed&quot;<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>req.usehistory = <span
+  style='color:#A31515'>&quot;y&quot;<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>req.term = <span
+  style='color:#A31515'>&quot;cat&quot;<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>res = serv.run_eSearch(req)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>' store
+  WebEnv &amp; QueryKey for use in eFetch<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>WebEnv = res.WebEnv<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>query_key = res.QueryKey<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>      
+  </span><span style='mso-spacerun:yes'>     </span>TextBox1.Text = <span
+  style='color:#A31515'>&quot;Search in PubMed for cat returned &quot;</span> +
+  res.Count + <span style='color:#A31515'>&quot; hits&quot;</span> + Chr(13) +
+  Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;WebEnv: &quot;</span> + WebEnv + Chr(13) +
+  Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;QueryKey: &quot;</span> + query_key + Chr(13) +
+  Chr(10) + Chr(13) + Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>Catch</span> eee <span style='color:blue'>As</span>
+  Exception<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>TextBox1.Text += eee.ToString()<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>End</span> <span style='color:blue'>Try<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";color:blue;mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:green'>'STEP #2: fetch 5 records from pubmed
+  starting from record #10<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>Try<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  serv <span style='color:blue'>As</span> <span style='color:blue'>New</span>
+  eFetchPubmed.eUtilsServiceSoapClient<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  req <span style='color:blue'>As</span> <span style='color:blue'>New</span>
+  eFetchPubmed.eFetchRequest<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  res <span style='color:blue'>As</span> eFetchPubmed.eFetchResult<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>' call
+  NCBI EFetch utility<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>req.WebEnv = WebEnv<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>req.query_key = query_key<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>req.retstart = 10<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>req.retmax = 5<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>res = serv.run_eFetch(req)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>'
+  results output<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>'
+  PubmedArticleSet array can include articles of PubmedArticleType and<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>'
+  PubmedBookArticleType types. There should be separate display method<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:green'>' for
+  each article's type.<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Dim</span>
+  i <span style='color:blue'>As</span> <span style='color:blue'>Integer<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>For</span>
+  i = 0 <span style='color:blue'>To</span> res.PubmedArticleSet.Length - 1<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>Dim</span>
+  art <span style='color:blue'>As</span> eFetchPubmed.PubmedArticleType<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>Dim</span>
+  book <span style='color:blue'>As</span> eFetchPubmed.PubmedBookArticleType<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>    
+  </span><span style='mso-spacerun:yes'>           </span>art = <span
+  style='color:blue'>Nothing<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span>book = <span
+  style='color:blue'>Nothing<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>If</span>
+  <span style='color:blue'>TypeOf</span> (res.PubmedArticleSet(i)) <span
+  style='color:blue'>Is</span> eFetchPubmed.PubmedArticleType <span
+  style='color:blue'>Then<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>art =
+  res.PubmedArticleSet(i)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>Else<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>book = res.PubmedArticleSet(i)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>End</span>
+  <span style='color:blue'>If<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";color:blue;mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>If</span>
+  <span style='color:blue'>Not</span> art <span style='color:blue'>Is</span> <span
+  style='color:blue'>Nothing</span> <span style='color:blue'>Then<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;Type: Pubmed Article&quot;</span> + Chr(13) +
+  Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;Title: &quot;</span> +
+  art.MedlineCitation.Article.ArticleTitle.Value + Chr(13) + Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;--------------------------&quot;</span> + Chr(13)
+  + Chr(10) + Chr(13) + Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>End</span>
+  <span style='color:blue'>If<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>If</span>
+  <span style='color:blue'>Not</span> book <span style='color:blue'>Is</span> <span
+  style='color:blue'>Nothing</span> <span style='color:blue'>Then<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;Type: Pubmed Book Article&quot;</span> + Chr(13)
+  + Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;Title: &quot;</span> +
+  book.BookDocument.ArticleTitle.Value + Chr(13) + Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                    </span>TextBox1.Text += <span
+  style='color:#A31515'>&quot;--------------------------&quot;</span> + Chr(13)
+  + Chr(10) + Chr(13) + Chr(10)<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>                </span><span style='color:blue'>End</span>
+  <span style='color:blue'>If<o:p></o:p></span></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";color:blue;mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";color:blue;mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span><span style='color:blue'>Next</span>
+  i<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><o:p>&nbsp;</o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span style='mso-spacerun:yes'>       
+  </span><span style='color:blue'>Catch</span> eee <span style='color:blue'>As</span>
+  Exception<o:p></o:p></span></p>
+  <p class=MsoNormal style='margin-bottom:0in;margin-bottom:.0001pt;line-height:
+  normal;mso-layout-grid-align:none;text-autospace:none'><span
+  style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+  "Times New Roman";mso-no-proof:yes'><span
+  style='mso-spacerun:yes'>            </span>TextBox1.Text = eee.ToString()<o:p></o:p></span></p>
+  <p class=MsoNormal style='text-autospace:none'><span style='font-size:10.0pt;
+  line-height:115%;font-family:"Courier New";mso-fareast-font-family:"Times New Roman";
+  mso-no-proof:yes'><span style='mso-spacerun:yes'>        </span><span
+  style='color:blue'>End</span> <span style='color:blue'>Try<o:p></o:p></span></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><br>
+<a href="esoap_help.html">&lt;&lt; Back</a> </p>
+
+<p>&nbsp;</p>
+
+<div>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Arial","sans-serif"'>&nbsp;<a
+href="mailto:info@ncbi.nlm.nih.gov">Write to the Help Desk</a></span><span
+style='font-size:9.0pt;line-height:115%;font-family:"Arial","sans-serif"'> <br>
+</span><span style='font-size:10.0pt;line-height:115%;font-family:"Arial","sans-serif"'><a
+href="http://www.ncbi.nlm.nih.gov">NCBI</a> | <a href="http://www.nlm.nih.gov">NLM</a>
+| <a href="http://www.nih.gov">NIH</a></span><span style='font-size:9.0pt;
+line-height:115%;font-family:"Arial","sans-serif"'> <br>
+</span><span style='font-size:10.0pt;line-height:115%;font-family:"Arial","sans-serif"'><a
+href="http://www.hhs.gov/">Department of Health &amp; Human Services</a></span><span
+style='font-size:9.0pt;line-height:115%;font-family:"Arial","sans-serif"'> <br>
+</span><span style='font-size:10.0pt;line-height:115%;font-family:"Arial","sans-serif"'><a
+href="http://www.nlm.nih.gov/privacy.html">Privacy Statement</a> | <a
+href="http://www.nih.gov/icd/od/foia/index.htm">Freedom of Information Act</a>
+| <a href="http://www.ncbi.nlm.nih.gov/About/disclaimer.html">Disclaimer</a></span></p>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

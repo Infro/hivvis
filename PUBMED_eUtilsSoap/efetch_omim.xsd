@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    xmlns:tns="http://www.ncbi.nlm.nih.gov/soap/eutils/efetch_omim"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://www.ncbi.nlm.nih.gov/soap/eutils/efetch_omim"
+    elementFormDefault="qualified"
+    >
+    
+    <!-- version="2.0" -->
+
+    <!-- based on http://www.ncbi.nlm.nih.gov/dtd/NCBI_Mim.dtd 05/02/08 -->
+
+	<xs:complexType name="Mim-allelic-variantType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-allelic-variant_number"/>
+			<xs:element ref="tns:Mim-allelic-variant_name"/>
+			<xs:element name="Mim-allelic-variant_aliases" type="tns:Mim-allelic-variant_aliasesType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-allelic-variant_mutation" type="tns:Mim-allelic-variant_mutationType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-allelic-variant_description" type="tns:Mim-allelic-variant_descriptionType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-allelic-variant_snpLinks" type="tns:Mim-allelic-variant_snpLinksType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-allelic-variant_aliasesType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-allelic-variant_aliases_E" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-allelic-variant_aliases_E" type="xs:string"/>
+	<xs:complexType name="Mim-allelic-variant_descriptionType">
+		<xs:sequence>
+			<xs:element name="Mim-text" type="tns:Mim-textType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-allelic-variant_mutationType">
+		<xs:sequence>
+			<xs:element name="Mim-text" type="tns:Mim-textType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-allelic-variant_name" type="xs:string"/>
+	<xs:element name="Mim-allelic-variant_number" type="xs:string"/>
+	<xs:complexType name="Mim-allelic-variant_snpLinksType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-authorType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-author_name"/>
+			<xs:element ref="tns:Mim-author_index"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-author_index" type="xs:string" />
+	<xs:element name="Mim-author_name" type="xs:string"/>
+	<xs:complexType name="Mim-citType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-cit_number"/>
+			<xs:element ref="tns:Mim-cit_author"/>
+			<xs:element ref="tns:Mim-cit_others"/>
+			<xs:element ref="tns:Mim-cit_year"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-cit_author" type="xs:string"/>
+	<xs:element name="Mim-cit_number" type="xs:string" />
+	<xs:element name="Mim-cit_others" type="xs:string"/>
+	<xs:element name="Mim-cit_year" type="xs:string" />
+	<xs:complexType name="Mim-dateType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-date_year"/>
+			<xs:element ref="tns:Mim-date_month" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-date_day" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-date_day" type="xs:string" />
+	<xs:element name="Mim-date_month" type="xs:string" />
+	<xs:element name="Mim-date_year" type="xs:string" />
+	<xs:complexType name="Mim-edit-itemType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-edit-item_author"/>
+			<xs:element name="Mim-edit-item_modDate" type="tns:Mim-edit-item_modDateType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-edit-item_author" type="xs:string"/>
+	<xs:complexType name="Mim-edit-item_modDateType">
+		<xs:sequence>
+			<xs:element name="Mim-date" type="tns:Mim-dateType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entries">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Mim-entry" type="tns:Mim-entryType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Mim-entryType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-entry_mimNumber"/>
+			<xs:element name="Mim-entry_mimType" type="tns:Mim-entry_mimTypeType"/>
+			<xs:element ref="tns:Mim-entry_title"/>
+			<xs:element ref="tns:Mim-entry_copyright" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-entry_symbol" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-entry_locus" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_synonyms" type="tns:Mim-entry_synonymsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_aliases" type="tns:Mim-entry_aliasesType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_included" type="tns:Mim-entry_includedType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_seeAlso" type="tns:Mim-entry_seeAlsoType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_text" type="tns:Mim-entry_textType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_textfields" type="tns:Mim-entry_textfieldsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_hasSummary" type="tns:Mim-entry_hasSummaryType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_summary" type="tns:Mim-entry_summaryType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_summaryAttribution" type="tns:Mim-entry_summaryAttributionType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_summaryEditHistory" type="tns:Mim-entry_summaryEditHistoryType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_summaryCreationDate" type="tns:Mim-entry_summaryCreationDateType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_allelicVariants" type="tns:Mim-entry_allelicVariantsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_hasSynopsis" type="tns:Mim-entry_hasSynopsisType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_clinicalSynopsis" type="tns:Mim-entry_clinicalSynopsisType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_synopsisAttribution" type="tns:Mim-entry_synopsisAttributionType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_synopsisEditHistory" type="tns:Mim-entry_synopsisEditHistoryType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_synopsisCreationDate" type="tns:Mim-entry_synopsisCreationDateType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_editHistory" type="tns:Mim-entry_editHistoryType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_creationDate" type="tns:Mim-entry_creationDateType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_references" type="tns:Mim-entry_referencesType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_attribution" type="tns:Mim-entry_attributionType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-entry_numGeneMaps"/>
+			<xs:element name="Mim-entry_medlineLinks" type="tns:Mim-entry_medlineLinksType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_proteinLinks" type="tns:Mim-entry_proteinLinksType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_nucleotideLinks" type="tns:Mim-entry_nucleotideLinksType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_structureLinks" type="tns:Mim-entry_structureLinksType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-entry_genomeLinks" type="tns:Mim-entry_genomeLinksType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_aliasesType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-entry_aliases_E" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_aliases_E" type="xs:string"/>
+	<xs:complexType name="Mim-entry_allelicVariantsType">
+		<xs:sequence>
+			<xs:element name="Mim-allelic-variant" type="tns:Mim-allelic-variantType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_attributionType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_clinicalSynopsisType">
+		<xs:sequence>
+			<xs:element name="Mim-index-term" type="tns:Mim-index-termType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_copyright" type="xs:string"/>
+	<xs:complexType name="Mim-entry_creationDateType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_editHistoryType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_genomeLinksType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_hasSummaryType">
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="true"/>
+					<xs:enumeration value="false"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_hasSynopsisType">
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="true"/>
+					<xs:enumeration value="false"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_includedType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-entry_included_E" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_included_E" type="xs:string"/>
+	<xs:element name="Mim-entry_locus" type="xs:string"/>
+	<xs:complexType name="Mim-entry_medlineLinksType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_mimNumber" type="xs:string"/>
+	<xs:complexType name="Mim-entry_mimTypeType" >
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="value">
+					<xs:simpleType>
+						<xs:restriction base="xs:NMTOKEN">
+							<xs:enumeration value="none"/>
+							<xs:enumeration value="star"/>
+							<xs:enumeration value="caret"/>
+							<xs:enumeration value="pound"/>
+							<xs:enumeration value="plus"/>
+							<xs:enumeration value="perc"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_nucleotideLinksType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_numGeneMaps" type="xs:string" />
+	<xs:complexType name="Mim-entry_proteinLinksType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_referencesType">
+		<xs:sequence>
+			<xs:element name="Mim-reference" type="tns:Mim-referenceType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_seeAlsoType">
+		<xs:sequence>
+			<xs:element name="Mim-cit" type="tns:Mim-citType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_structureLinksType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_summaryType">
+		<xs:sequence>
+			<xs:element name="Mim-text" type="tns:Mim-textType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_summaryAttributionType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_summaryCreationDateType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_summaryEditHistoryType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_symbol" type="xs:string"/>
+	<xs:complexType name="Mim-entry_synonymsType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-entry_synonyms_E" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_synonyms_E" type="xs:string"/>
+	<xs:complexType name="Mim-entry_synopsisAttributionType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_synopsisCreationDateType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_synopsisEditHistoryType">
+		<xs:sequence>
+			<xs:element name="Mim-edit-item" type="tns:Mim-edit-itemType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_textType">
+		<xs:sequence>
+			<xs:element name="Mim-text" type="tns:Mim-textType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-entry_textfieldsType">
+		<xs:sequence>
+			<xs:element name="Mim-text" type="tns:Mim-textType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-entry_title" type="xs:string"/>
+	<xs:complexType name="Mim-index-termType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-index-term_key"/>
+			<xs:element name="Mim-index-term_terms" type="tns:Mim-index-term_termsType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-index-term_key" type="xs:string"/>
+	<xs:complexType name="Mim-index-term_termsType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-index-term_terms_E" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-index-term_terms_E" type="xs:string"/>
+	<xs:complexType name="Mim-linkType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-link_num"/>
+			<xs:element ref="tns:Mim-link_uids"/>
+			<xs:element ref="tns:Mim-link_numRelevant" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-link_num" type="xs:string" />
+	<xs:element name="Mim-link_numRelevant" type="xs:string" />
+	<xs:element name="Mim-link_uids" type="xs:string"/>
+	<xs:complexType name="Mim-pageType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-page_from"/>
+			<xs:element ref="tns:Mim-page_to" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-page_from" type="xs:string"/>
+	<xs:element name="Mim-page_to" type="xs:string"/>
+	<xs:complexType name="Mim-referenceType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-reference_number"/>
+			<xs:element ref="tns:Mim-reference_origNumber" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-reference_type" type="tns:Mim-reference_typeType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-reference_authors" type="tns:Mim-reference_authorsType"/>
+			<xs:element ref="tns:Mim-reference_primaryAuthor"/>
+			<xs:element ref="tns:Mim-reference_otherAuthors"/>
+			<xs:element ref="tns:Mim-reference_citationTitle"/>
+			<xs:element ref="tns:Mim-reference_citationType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_bookTitle" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-reference_editors" type="tns:Mim-reference_editorsType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_volume" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_edition" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_journal" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_series" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_publisher" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_place" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_commNote" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-reference_pubDate" type="tns:Mim-reference_pubDateType"/>
+			<xs:element name="Mim-reference_pages" type="tns:Mim-reference_pagesType" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_miscInfo" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="tns:Mim-reference_pubmedUID" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="Mim-reference_ambiguous" type="tns:Mim-reference_ambiguousType"/>
+			<xs:element name="Mim-reference_noLink" type="tns:Mim-reference_noLinkType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-reference_ambiguousType">
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="true"/>
+					<xs:enumeration value="false"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="Mim-reference_authorsType">
+		<xs:sequence>
+			<xs:element name="Mim-author" type="tns:Mim-authorType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-reference_bookTitle" type="xs:string"/>
+	<xs:element name="Mim-reference_citationTitle" type="xs:string"/>
+	<xs:element name="Mim-reference_citationType" type="xs:string" />
+	<xs:element name="Mim-reference_commNote" type="xs:string"/>
+	<xs:element name="Mim-reference_edition" type="xs:string"/>
+	<xs:complexType name="Mim-reference_editorsType">
+		<xs:sequence>
+			<xs:element name="Mim-author" type="tns:Mim-authorType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-reference_journal" type="xs:string"/>
+	<xs:element name="Mim-reference_miscInfo" type="xs:string"/>
+	<xs:complexType name="Mim-reference_noLinkType">
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="true"/>
+					<xs:enumeration value="false"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="Mim-reference_number" type="xs:string" />
+	<xs:element name="Mim-reference_origNumber" type="xs:string" />
+	<xs:element name="Mim-reference_otherAuthors" type="xs:string"/>
+	<xs:complexType name="Mim-reference_pagesType">
+		<xs:sequence>
+			<xs:element name="Mim-page" type="tns:Mim-pageType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-reference_place" type="xs:string"/>
+	<xs:element name="Mim-reference_primaryAuthor" type="xs:string"/>
+	<xs:complexType name="Mim-reference_pubDateType">
+		<xs:sequence>
+			<xs:element name="Mim-date" type="tns:Mim-dateType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-reference_publisher" type="xs:string"/>
+	<xs:element name="Mim-reference_pubmedUID" type="xs:string" />
+	<xs:element name="Mim-reference_series" type="xs:string"/>
+	<xs:complexType name="Mim-reference_typeType">
+		<xs:attribute name="value" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="not-set"/>
+					<xs:enumeration value="citation"/>
+					<xs:enumeration value="book"/>
+					<xs:enumeration value="personal-communication"/>
+					<xs:enumeration value="book-citation"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="Mim-reference_volume" type="xs:string"/>
+	<xs:element name="Mim-set">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Mim-set_releaseDate" type="tns:Mim-set_releaseDateType"/>
+				<xs:element name="Mim-set_mimEntries" type="tns:Mim-set_mimEntriesType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Mim-set_mimEntriesType">
+		<xs:sequence>
+			<xs:element name="Mim-entry" type="tns:Mim-entryType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-set_releaseDateType">
+		<xs:sequence>
+			<xs:element name="Mim-date" type="tns:Mim-dateType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="Mim-textType">
+		<xs:sequence>
+			<xs:element ref="tns:Mim-text_label"/>
+			<xs:element ref="tns:Mim-text_text"/>
+			<xs:element name="Mim-text_neighbors" type="tns:Mim-text_neighborsType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-text_label" type="xs:string"/>
+	<xs:complexType name="Mim-text_neighborsType">
+		<xs:sequence>
+			<xs:element name="Mim-link" type="tns:Mim-linkType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Mim-text_text" type="xs:string"/>
+</xs:schema>
