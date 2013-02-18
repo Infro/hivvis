@@ -291,7 +291,7 @@
     <Content Include="PUBMED_eUtilsSoap\esoap_toolkit.html" />
     <Content Include="PUBMED_eUtilsSoap\esoap_whatsnew.html" />
     <Content Include="PUBMED_eUtilsSoap\ncbi-mathml2\readme.txt" />
-    <Content Include="Stuff.txt" />
+    <None Include="README" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
