@@ -18,13 +18,10 @@ namespace Download_PubMED
         //ELink, see http://www.ncbi.nlm.nih.gov/books/NBK25499/#chapter4.ELink
         //EPost, Append UIDs to a list of UIDs
         //ESpell, Suggests ?improved queries? and spelling fixes.
+
         static void Main(string[] args)
         {
-            //Search by MESH
-            //"QUERY_HERE"[MeSH] //Leave MeSH alone, only modify the QUERY_HERE
-            //!!!!MeSH DOES NOT include everything in pubmed!!!!
             string myQuery = "((\"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])) AND hasabstract[text]";
-            //myQuery = "hiv+aids";
             string Result;
             //try
             //{
