@@ -22,10 +22,18 @@ namespace Download_PubMED
 
         static void Main(string[] args)
         {
+            //Current Plan
+            //Get Article IDs from PMC
+            //Get Journal name, File Name, and Date
+            //Sort by Journal Name
+            //Extract tars
+            //Keep only the Journals & Articles we care about.
+            //
+            //Processing ?? Co-Word Occurance ??
+            //Stop Words = 1:5000 checking every 500,000 words.
             string myQuery = "((\"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])) AND hasabstract[text]";
             string linkageFileName = "Links.txt";
             string articleFileName = "Articles.csv";
-            int current = 0;
             //myQuery      = "( \"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])";
             eUtils.eUtilsServiceSoapClient utilServ = new eUtils.eUtilsServiceSoapClient();
             string database = null;
@@ -40,6 +48,8 @@ namespace Download_PubMED
 
             while (searchResult != null)
             {
+                if (int.Parse(searchResult.RetStart) > 1000)
+                    break;
                 foreach (string paper in searchResult.IdList)
                 {
                     #region Article Links
@@ -75,16 +85,36 @@ namespace Download_PubMED
                         if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedArticleType)
                         {
                             art = (eFetch_pubmed.PubmedArticleType)fetchResult.PubmedArticleSet[i];
-                            ArticleOutputFile.Write(string.Join(",",
-                                art.MedlineCitation.PMID.Value,
-                                art.PubmedData.History[0].Year + " " + art.PubmedData.History[0].Month + " " + art.PubmedData.History[0].Day,
-                                //art.MedlineCitation.Article.ArticleDate != null ? art.MedlineCitation.Article.ArticleDate[0].Year + " " + art.MedlineCitation.Article.ArticleDate[0].Month + " " + art.MedlineCitation.Article.ArticleDate[0].Day : "N/A",
-                                '"' + art.MedlineCitation.Article.ArticleTitle.Value.Replace("\"", "''") + '"',
-                                '"' + art.MedlineCitation.Article.Abstract.AbstractText[0].Value.Replace("\"", "''") + '"',
-                                art.MedlineCitation.MeshHeadingList != null ? '"' + string.Join(" ", art.MedlineCitation.MeshHeadingList.Select(o => o.DescriptorName.Value)) + '"' : "N/A",
-                                art.MedlineCitation.CitationSubset != null ? string.Join(" ", art.MedlineCitation.CitationSubset) : "N/A",
-                                (art.MedlineCitation.Article.GrantList != null && art.MedlineCitation.Article.GrantList.Grant != null) ?
-                                string.Join(" ", art.MedlineCitation.Article.GrantList.Grant.Select(o => o.Agency)) : "N/A"));
+                            if (art.PubmedData.History == null)
+                            {
+                                art.PubmedData.History = new eFetch_pubmed.PubMedPubDateType[1];
+                                art.PubmedData.History[0] = new eFetch_pubmed.PubMedPubDateType();
+                                art.PubmedData.History[0].Year = "N/A";
+                                art.PubmedData.History[0].Month = string.Empty;
+                                art.PubmedData.History[0].Day = string.Empty;
+                            }
+                            if(art.MedlineCitation.Article.ArticleTitle != null)
+                                ArticleOutputFile.Write(string.Join(",",
+                                    art.MedlineCitation.PMID.Value,
+                                    art.PubmedData.History[0].Year + " " + art.PubmedData.History[0].Month + " " + art.PubmedData.History[0].Day,
+                                    //art.MedlineCitation.Article.ArticleDate != null ? art.MedlineCitation.Article.ArticleDate[0].Year + " " + art.MedlineCitation.Article.ArticleDate[0].Month + " " + art.MedlineCitation.Article.ArticleDate[0].Day : "N/A",
+                                    '"' + art.MedlineCitation.Article.ArticleTitle.Value.Replace("\"", "''") + '"',
+                                    '"' + art.MedlineCitation.Article.Abstract.AbstractText[0].Value.Replace("\"", "''") + '"',
+                                    art.MedlineCitation.MeshHeadingList != null ? '"' + string.Join(" ", art.MedlineCitation.MeshHeadingList.Select(o => o.DescriptorName.Value)) + '"' : "N/A",
+                                    art.MedlineCitation.CitationSubset != null ? string.Join(" ", art.MedlineCitation.CitationSubset) : "N/A",
+                                    (art.MedlineCitation.Article.GrantList != null && art.MedlineCitation.Article.GrantList.Grant != null) ?
+                                    string.Join(" ", art.MedlineCitation.Article.GrantList.Grant.Select(o => o.Agency)) : "N/A"));
+                            else if(art.MedlineCitation.Article.Journal.Title != null)
+                                ArticleOutputFile.Write(string.Join(",",
+                                    art.MedlineCitation.PMID.Value,
+                                    art.PubmedData.History[0].Year + " " + art.PubmedData.History[0].Month + " " + art.PubmedData.History[0].Day,
+                                    '"' + art.MedlineCitation.Article.Journal.Title.Replace("\"", "''") + '"',
+                                    '"' + art.MedlineCitation.Article.Abstract.AbstractText[0].Value.Replace("\"", "''") + '"',
+                                    art.MedlineCitation.MeshHeadingList != null ? '"' + string.Join(" ", art.MedlineCitation.MeshHeadingList.Select(o => o.DescriptorName.Value)) + '"' : "N/A",
+                                    art.MedlineCitation.CitationSubset != null ? string.Join(" ", art.MedlineCitation.CitationSubset) : "N/A",
+                                    (art.MedlineCitation.Article.GrantList != null && art.MedlineCitation.Article.GrantList.Grant != null) ?
+                                    string.Join(" ", art.MedlineCitation.Article.GrantList.Grant.Select(o => o.Agency)) : "N/A"));
+
                             ArticleOutputFile.WriteLine();
                             //foreach (var v in art.MedlineCitation.Article.Abstract.AbstractText)
                             //Console.WriteLine(v.Value);
@@ -123,6 +153,8 @@ namespace Download_PubMED
 
             //req.db = "pmc";
             req.term = HttpUtility.UrlEncode(myQuery);
+            //req.RetMax = "100000";
+            req.RetMax = "1000";
             req.db = db;
             req.usehistory = "y";
             if (searchResult != null)
