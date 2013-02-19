@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using Download_PubMED.eUtils;
 using System.IO;
 
 namespace Download_PubMED
@@ -24,43 +23,76 @@ namespace Download_PubMED
         static void Main(string[] args)
         {
             string myQuery = "((\"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])) AND hasabstract[text]";
-            myQuery = "(\"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])";
-            eUtils.eUtilsServiceSoapClient serv = new eUtils.eUtilsServiceSoapClient();
+            string linkageFileName = "Links.txt";
+            string articleFileName = "Articles.csv";
+            //myQuery      = "( \"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])";
+            eUtils.eUtilsServiceSoapClient utilServ = new eUtils.eUtilsServiceSoapClient();
             string database = null;
-            database = "PMC";
-            eUtils.eSearchResult searchResult = GetSearchResults(database, myQuery, serv);
+            //database = "PMC";
+            eUtils.eSearchResult searchResult = GetSearchResults(database, myQuery, utilServ);
             List<string> Results = new List<string>(searchResult.IdList);
-            TextWriter LinksOutputFile = new StreamWriter("Links.txt");
+            //TextWriter LinksOutputFile = new StreamWriter(linkageFileName);
+            TextWriter ArticleOutputFile = new StreamWriter(articleFileName);
             //List<string> Links = new List<string>();
             foreach (string paper in Results)
             //string paper = Results[0];
             {
-                eUtils.eLinkResult linkResults = GetLinkResults(paper, serv);
-                if (linkResults.LinkSet.Length != 0)
-                {
-                    foreach (var a in linkResults.LinkSet)
-                        foreach (var b in a.LinkSetDb)
-                            foreach (var c in b.Link)
-                                if(c.Id.Value != paper)
-                                    LinksOutputFile.WriteLine(string.Format("pubmed,{0} {2},{1}", paper, c.Id.Value, b.DbTo));
-                                    //Links.Add(string.Format("pubmed,{0} {2},{1}", paper, c.Id.Value, b.DbTo));
-                    //linkResults.LinkSet.SelectMany<LinkSetType, string>(o => o.LinkSetDb.SelectMany<LinkSetDbType,string>(o.IdList.Select<IdType, string>(v => v.Value)));
+                //eUtils.eLinkResult linkResults = GetLinkResults(paper, utilServ);
+                //if (linkResults.LinkSet.Length != 0)
+                //{
+                //    LinksOutputFile.Write(paper);
+                //    foreach (var a in linkResults.LinkSet)
+                //        foreach (var b in a.LinkSetDb)
+                //            foreach (var c in b.Link)
+                //                if(c.Id.Value != paper && b.DbTo.ToLower() == "pubmed")
+                //                    LinksOutputFile.Write(" " + c.Id.Value)
+                //                    //LinksOutputFile.WriteLine(string.Format("pubmed,{0} {2},{1}", paper, c.Id.Value, b.DbTo));
+                //                    //Links.Add(string.Format("pubmed,{0} {2},{1}", paper, c.Id.Value, b.DbTo));
+                //    //linkResults.LinkSet.SelectMany<LinkSetType, string>(o => o.LinkSetDb.SelectMany<LinkSetDbType,string>(o.IdList.Select<IdType, string>(v => v.Value)));
 
-                    //Add Paper to Paper Network
-                    //If no references inside pubmed, it will throw an error
-                    //eUtils.LinkSetType ls = linkResults.LinkSet.First(o => o.DbFrom.ToLower() == "pubmed");
-                    //linkResults.LinkSet.SelectMany(o => o.LinkSetDb
-                }
-                else
+                //    //Add Paper to Paper Network
+                //    //If no references inside pubmed, it will throw an error
+                //    //eUtils.LinkSetType ls = linkResults.LinkSet.First(o => o.DbFrom.ToLower() == "pubmed");
+                //    //linkResults.LinkSet.SelectMany(o => o.LinkSetDb
+                //}
+                //else
+                //{
+                //    //No References!?!?
+                //    //Should probably remove from Dataset.
+                //    throw new ArgumentNullException("linkResults", "PubMED ID: " + paper + " has no references, which is improbable to impossible.  Throwing Error");
+                //}
+                
+                eFetch_pubmed.eUtilsServiceSoapClient fetchServ = new eFetch_pubmed.eUtilsServiceSoapClient();
+                eFetch_pubmed.eFetchRequest fetchRequest = new eFetch_pubmed.eFetchRequest();
+                fetchRequest.id = paper;
+                //fetchRequest.id = string.Join(",", Results);
+                eFetch_pubmed.eFetchResult fetchResult = fetchServ.run_eFetch(fetchRequest);
+                for (int i = 0; i < fetchResult.PubmedArticleSet.Length; i++)
                 {
-                    //No References!?!?
-                    //Should probably remove from Dataset.
-                    throw new ArgumentNullException("linkResults", "PubMED ID: " + paper + " has no references, which is improbable to impossible.  Throwing Error");
+                    eFetch_pubmed.PubmedArticleType art = null;
+                    //eFetch_pubmed.PubmedBookArticleType book = null;
+
+                    if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedArticleType)
+                    {
+                        art = (eFetch_pubmed.PubmedArticleType)fetchResult.PubmedArticleSet[i];
+                        ArticleOutputFile.Write(string.Join(",",
+                            art.MedlineCitation.Article.ArticleTitle.Value,
+                            art.MedlineCitation.Article.Abstract.AbstractText[0].Value));
+                        //foreach (var v in art.MedlineCitation.Article.Abstract.AbstractText)
+                            //Console.WriteLine(v.Value);
+                        //foreach(string a in art.MedlineCitation.CitationSubset)
+                            //Console.WriteLine(a);
+                    }
+                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedBookArticleType) { }
+                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedBookDataType) { }
+                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedDataType) { }
+                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubMedPubDateType) { }
+                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubMedPubDateTypePubStatus) { }
                 }
             }
-            LinksOutputFile.Flush();
-            LinksOutputFile.Close();
-            LinksOutputFile.Dispose();
+            //LinksOutputFile.Flush();
+            //LinksOutputFile.Close();
+            //LinksOutputFile.Dispose();
         }
 
         private static eUtils.eLinkResult GetLinkResults(string id, eUtils.eUtilsServiceSoapClient serv)
@@ -86,7 +118,7 @@ namespace Download_PubMED
             return res;
         }
 
-        private static IEnumerable<eSearchResult> GetAllSearchResults(string myQuery, eUtils.eUtilsServiceSoapClient serv)
+        private static IEnumerable<eUtils.eSearchResult> GetAllSearchResults(string myQuery, eUtils.eUtilsServiceSoapClient serv)
         {
             throw new NotImplementedException();
             return null;

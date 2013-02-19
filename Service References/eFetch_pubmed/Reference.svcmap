@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5ff3c98f-0b42-460e-8c58-976c89027845" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="C:\Users\Infro\Downloads\Learning\VisualizationInformationUI\assignment\Project\PUBMED_eUtilsSoap\efetch_pubmed.wsdl" Protocol="file" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="efetch_pubmed.xsd" MetadataType="Schema" ID="6aedc217-8f66-49ac-b87d-dec0c432099d" SourceId="1" SourceUrl="file:///C:/Users/Infro/Downloads/Learning/VisualizationInformationUI/assignment/Project/PUBMED_eUtilsSoap/efetch_pubmed.xsd" />
+    <MetadataFile FileName="efetch_db_pubmed.xsd" MetadataType="Schema" ID="0123812b-0dad-4da3-8c5c-8590f4f5c96e" SourceId="1" SourceUrl="file:///C:/Users/Infro/Downloads/Learning/VisualizationInformationUI/assignment/Project/PUBMED_eUtilsSoap/efetch_db_pubmed.xsd" />
+    <MetadataFile FileName="efetch_pubmed.wsdl" MetadataType="Wsdl" ID="150bee6e-0d06-4381-ba48-5698d6b3e192" SourceId="1" SourceUrl="file:///C:/Users/Infro/Downloads/Learning/VisualizationInformationUI/assignment/Project/PUBMED_eUtilsSoap/efetch_pubmed.wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
