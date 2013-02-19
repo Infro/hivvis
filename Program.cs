@@ -25,74 +25,88 @@ namespace Download_PubMED
             string myQuery = "((\"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])) AND hasabstract[text]";
             string linkageFileName = "Links.txt";
             string articleFileName = "Articles.csv";
+            int current = 0;
             //myQuery      = "( \"hiv\"[MeSH Terms] OR \"hiv\"[All Fields]) OR (\"acquired immunodeficiency syndrome\"[MeSH Terms] OR (\"acquired\"[All Fields] AND \"immunodeficiency\"[All Fields] AND \"syndrome\"[All Fields]) OR \"acquired immunodeficiency syndrome\"[All Fields] OR \"aids\"[All Fields])";
             eUtils.eUtilsServiceSoapClient utilServ = new eUtils.eUtilsServiceSoapClient();
             string database = null;
             //database = "PMC";
             eUtils.eSearchResult searchResult = GetSearchResults(database, myQuery, utilServ);
-            List<string> Results = new List<string>(searchResult.IdList);
-            //TextWriter LinksOutputFile = new StreamWriter(linkageFileName);
+
+            TextWriter LinksOutputFile = new StreamWriter(linkageFileName);
             TextWriter ArticleOutputFile = new StreamWriter(articleFileName);
-            //List<string> Links = new List<string>();
-            foreach (string paper in Results)
-            //string paper = Results[0];
+            ArticleOutputFile.WriteLine("PMID,Date,Title,Abstract,MeSH,Citation,Grant");
+
+            int Total = int.Parse(searchResult.Count);
+
+            while (searchResult != null)
             {
-                //eUtils.eLinkResult linkResults = GetLinkResults(paper, utilServ);
-                //if (linkResults.LinkSet.Length != 0)
-                //{
-                //    LinksOutputFile.Write(paper);
-                //    foreach (var a in linkResults.LinkSet)
-                //        foreach (var b in a.LinkSetDb)
-                //            foreach (var c in b.Link)
-                //                if(c.Id.Value != paper && b.DbTo.ToLower() == "pubmed")
-                //                    LinksOutputFile.Write(" " + c.Id.Value)
-                //                    //LinksOutputFile.WriteLine(string.Format("pubmed,{0} {2},{1}", paper, c.Id.Value, b.DbTo));
-                //                    //Links.Add(string.Format("pubmed,{0} {2},{1}", paper, c.Id.Value, b.DbTo));
-                //    //linkResults.LinkSet.SelectMany<LinkSetType, string>(o => o.LinkSetDb.SelectMany<LinkSetDbType,string>(o.IdList.Select<IdType, string>(v => v.Value)));
-
-                //    //Add Paper to Paper Network
-                //    //If no references inside pubmed, it will throw an error
-                //    //eUtils.LinkSetType ls = linkResults.LinkSet.First(o => o.DbFrom.ToLower() == "pubmed");
-                //    //linkResults.LinkSet.SelectMany(o => o.LinkSetDb
-                //}
-                //else
-                //{
-                //    //No References!?!?
-                //    //Should probably remove from Dataset.
-                //    throw new ArgumentNullException("linkResults", "PubMED ID: " + paper + " has no references, which is improbable to impossible.  Throwing Error");
-                //}
-                
-                eFetch_pubmed.eUtilsServiceSoapClient fetchServ = new eFetch_pubmed.eUtilsServiceSoapClient();
-                eFetch_pubmed.eFetchRequest fetchRequest = new eFetch_pubmed.eFetchRequest();
-                fetchRequest.id = paper;
-                //fetchRequest.id = string.Join(",", Results);
-                eFetch_pubmed.eFetchResult fetchResult = fetchServ.run_eFetch(fetchRequest);
-                for (int i = 0; i < fetchResult.PubmedArticleSet.Length; i++)
+                foreach (string paper in searchResult.IdList)
                 {
-                    eFetch_pubmed.PubmedArticleType art = null;
-                    //eFetch_pubmed.PubmedBookArticleType book = null;
-
-                    if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedArticleType)
+                    #region Article Links
+                    eUtils.eLinkResult linkResults = GetLinkResults(paper, utilServ);
+                    //if (linkResults.LinkSet.Length != 0)
+                    //{
+                    LinksOutputFile.Write(paper);
+                    foreach (var a in linkResults.LinkSet)
+                        foreach (var b in a.LinkSetDb)
+                            foreach (var c in b.Link)
+                                if (c.Id.Value != paper && b.DbTo.ToLower() == "pubmed")
+                                    LinksOutputFile.Write(" " + c.Id.Value);
+                    LinksOutputFile.WriteLine();
+                    //}
+                    //else
+                    //{
+                    //    //No References!?!?
+                    //    //Should probably remove from Dataset.
+                    //    throw new ArgumentNullException("linkResults", "PubMED ID: " + paper + " has no references, which is improbable to impossible.  Throwing Error");
+                    //}
+                    #endregion
+                    #region Article Title, Abstract, and Date
+                    eFetch_pubmed.eUtilsServiceSoapClient fetchServ = new eFetch_pubmed.eUtilsServiceSoapClient();
+                    eFetch_pubmed.eFetchRequest fetchRequest = new eFetch_pubmed.eFetchRequest();
+                    fetchRequest.id = paper;
+                    //fetchRequest.id = string.Join(",", Results);
+                    eFetch_pubmed.eFetchResult fetchResult = fetchServ.run_eFetch(fetchRequest);
+                    for (int i = 0; i < fetchResult.PubmedArticleSet.Length; i++)
                     {
-                        art = (eFetch_pubmed.PubmedArticleType)fetchResult.PubmedArticleSet[i];
-                        ArticleOutputFile.Write(string.Join(",",
-                            art.MedlineCitation.Article.ArticleTitle.Value,
-                            art.MedlineCitation.Article.Abstract.AbstractText[0].Value));
-                        //foreach (var v in art.MedlineCitation.Article.Abstract.AbstractText)
+                        eFetch_pubmed.PubmedArticleType art = null;
+                        //eFetch_pubmed.PubmedBookArticleType book = null;
+
+                        if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedArticleType)
+                        {
+                            art = (eFetch_pubmed.PubmedArticleType)fetchResult.PubmedArticleSet[i];
+                            ArticleOutputFile.Write(string.Join(",",
+                                art.MedlineCitation.PMID.Value,
+                                art.PubmedData.History[0].Year + " " + art.PubmedData.History[0].Month + " " + art.PubmedData.History[0].Day,
+                                //art.MedlineCitation.Article.ArticleDate != null ? art.MedlineCitation.Article.ArticleDate[0].Year + " " + art.MedlineCitation.Article.ArticleDate[0].Month + " " + art.MedlineCitation.Article.ArticleDate[0].Day : "N/A",
+                                '"' + art.MedlineCitation.Article.ArticleTitle.Value.Replace("\"", "''") + '"',
+                                '"' + art.MedlineCitation.Article.Abstract.AbstractText[0].Value.Replace("\"", "''") + '"',
+                                art.MedlineCitation.MeshHeadingList != null ? '"' + string.Join(" ", art.MedlineCitation.MeshHeadingList.Select(o => o.DescriptorName.Value)) + '"' : "N/A",
+                                art.MedlineCitation.CitationSubset != null ? string.Join(" ", art.MedlineCitation.CitationSubset) : "N/A",
+                                (art.MedlineCitation.Article.GrantList != null && art.MedlineCitation.Article.GrantList.Grant != null) ?
+                                string.Join(" ", art.MedlineCitation.Article.GrantList.Grant.Select(o => o.Agency)) : "N/A"));
+                            ArticleOutputFile.WriteLine();
+                            //foreach (var v in art.MedlineCitation.Article.Abstract.AbstractText)
                             //Console.WriteLine(v.Value);
-                        //foreach(string a in art.MedlineCitation.CitationSubset)
+                            //foreach(string a in art.MedlineCitation.CitationSubset)
                             //Console.WriteLine(a);
+                        }
+                        else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedBookArticleType) { }
+                        else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedBookDataType) { }
+                        else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedDataType) { }
+                        else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubMedPubDateType) { }
+                        else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubMedPubDateTypePubStatus) { }
                     }
-                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedBookArticleType) { }
-                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedBookDataType) { }
-                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubmedDataType) { }
-                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubMedPubDateType) { }
-                    else if (fetchResult.PubmedArticleSet[i] is eFetch_pubmed.PubMedPubDateTypePubStatus) { }
+                    #endregion
                 }
+                searchResult = GetSearchResults(database, myQuery, utilServ, searchResult);
             }
-            //LinksOutputFile.Flush();
-            //LinksOutputFile.Close();
-            //LinksOutputFile.Dispose();
+            LinksOutputFile.Flush();
+            LinksOutputFile.Close();
+            LinksOutputFile.Dispose();
+            ArticleOutputFile.Flush();
+            ArticleOutputFile.Close();
+            ArticleOutputFile.Dispose();
         }
 
         private static eUtils.eLinkResult GetLinkResults(string id, eUtils.eUtilsServiceSoapClient serv)
@@ -103,7 +117,7 @@ namespace Download_PubMED
             return serv.run_eLink(req);
         }
 
-        private static eUtils.eSearchResult GetSearchResults(string db, string myQuery, eUtils.eUtilsServiceSoapClient serv)
+        private static eUtils.eSearchResult GetSearchResults(string db, string myQuery, eUtils.eUtilsServiceSoapClient serv, eUtils.eSearchResult searchResult = null)
         {
             eUtils.eSearchRequest req = new eUtils.eSearchRequest();
 
@@ -111,17 +125,19 @@ namespace Download_PubMED
             req.term = HttpUtility.UrlEncode(myQuery);
             req.db = db;
             req.usehistory = "y";
+            if (searchResult != null)
+            {
+                int current = (int.Parse(searchResult.RetStart) + int.Parse(searchResult.RetMax));
+                if (current >= int.Parse(searchResult.Count))
+                    return null;
+                req.RetStart = current.ToString();
+                req.WebEnv = searchResult.WebEnv;
+            }
 
             eUtils.eSearchResult res = serv.run_eSearch(req);
             req.WebEnv = res.WebEnv;
             req.QueryKey = res.QueryKey;
             return res;
-        }
-
-        private static IEnumerable<eUtils.eSearchResult> GetAllSearchResults(string myQuery, eUtils.eUtilsServiceSoapClient serv)
-        {
-            throw new NotImplementedException();
-            return null;
         }
     }
 }
